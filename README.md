@@ -50,7 +50,7 @@ There were five key stages to the project:
 
   **Histogram**
   
-  This involves converting the image into a histogram representation of the pixel distribution. Since the images were grayscale, this showed the intensity distribution of the pixels and proved to be a fast and indicative feature for the model. The depiction below shows an example of how this technique works to represent each pixel of the photo:
+  This involves converting the image into a histogram representation of the pixel intensities. Comparing the pixel intensity histograms between images proved to be a fast and indicative feature for the model. The depiction below shows an example of how this technique works to represent each pixel of the photo:
   
   ![Histogram Sample](https://github.com/stooblie/capstone_fighting_fake_news/blob/master/images/project/histogram_sample.jpg)  
 
