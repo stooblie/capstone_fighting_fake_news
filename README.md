@@ -12,7 +12,7 @@
 
  Due to the proliferation of social media tools and the ease with which one can set up a website today, anyone can 'publish' content with the potential to garner widespread engagement. As the following figure shows, it can often be difficult to distinguish truth from fiction when it comes to this information:
 
-  ![Fake News Statistics](https://github.com/stooblie/capstone_project/blob/master/capstone_project/image_project/images/project/most_americans_believe_fake_news.jpg)
+  ![Fake News Statistics](https://github.com/stooblie/capstone_fighting_fake_news/blob/master/images/project/most_americans_believe_fake_news.jpg)
 
   Since these stories are believable, they can cause harm by inciting panic, proliferating misinformation, destroying reputations, and more. Just as an article can be false, misleading images are circulated on the internet and they can be just as harmful. As the idiom goes, 'A picture is worth a thousand words.' Even a legitimate, confirmed news article could still insidiously use a false image, and there is no automated way to know if it is real or not. This particular problem was the motivation for the project.
 
