@@ -36,7 +36,7 @@ There were five key stages to the project:
 
   One key challenge the project presented was how to measure the success of the system when it was unknown whether the images from the internet were fake or not. This required me to manually seek out samples of the fake images and the different formats they could appear in on the internet, and use those as 'test' images to ensure that my system would capture a sufficient range of formats that the fake images could appear in. For example, this fake image of a shark swimming on the highway during Hurricane Harvey can manifest in the following ways:
   
-  ![Shark Collage](https://github.com/stooblie/capstone_project/blob/master/capstone_project/image_project/images/project/test_image_collage_shark.jpg) 
+  ![Shark Collage](https://github.com/stooblie/capstone_fighting_fake_news/blob/master/images/project/test_image_collage_shark.jpg) 
 
 ### **3. Oversampling Correction**
 
