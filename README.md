@@ -61,6 +61,8 @@ There were five key stages to the project:
   **Template Matching**
   
   Template matching is critical for finding matches in 'out of frame' images, where the fake image might be in a tweet, cropped, or combined in a frame with other pictures. Since this is a deeper problem than matching cleaner, full frame images, it was not my focus but I did have success using a very specific 'tweet matching' template. Tweets have a specified structure for their embedded images, the pictures are ~93% the width of the tweet and have a 2-1 ratio of width to length. Using these parameters, I was able to create a template that checked specifically  whether the target fake image was inside of the picture of the tweet.
+  
+  ![Template Match](https://github.com/stooblie/capstone_fighting_fake_news/blob/master/images/project/template_match_depiction.jpg) 
 
   There is ample opportunity to expand this metric and create a more generalized template matching system.
 
