@@ -28,7 +28,7 @@ There were five key stages to the project:
 
 ### **1. Data Collection & Storage**
 
-  In order to collect the images for analysis, I constructed a web scraper using the Python library Scrapy. This framework made it possible to easily build a fast web scraper with automatic image and file pipelines into AWS S3. I built unique scrapers with distinct start urls and AWS S3 folder feeds for each 'topic' a user might be interested in.
+  The project used a web scraper built with the Python library Scrapy to collect the data. This framework made it possible to easily build a fast web scraper with automatic image and file pipelines into AWS S3. The project includes unique scrapers with distinct start urls and AWS S3 folder feeds for each 'topic' a user might be interested in.
 
   The data includes images, image urls, text, and page urls from the web pages. Having the page urls allows the user to return to the websites and collect additional information as necessary.
 
@@ -40,17 +40,17 @@ There were five key stages to the project:
 
 ### **3. Oversampling Correction**
 
-  A second significant challenge was managing an unbalanced dataset. The system is essentially finding a 'needle in a haystack', meaning only a small percentage of the images I am analyzing would be positive targets. This is problematic for classification in machine learning, because the models will lean too heavily towards a negative classification if the vast majority of the dataset falls under that category.
+  A second significant challenge was managing an unbalanced dataset. The system is essentially finding a 'needle in a haystack', meaning only a small percentage of the images from the web scrape would actually be fake/positive targets. This is problematic for classification in machine learning, because the models will lean too heavily towards a negative classification if the vast majority of the dataset falls under that category.
 
-  In order to correct for this, I deployed a technique called Synthetic Minority Over-sampling Technique (SMOTE). This involved taking my test images that I know should be detected as true positives by the system, and synthetically creating new observations from that dataset that are effectively weighted averages of similar test images. This allowed me to expand my sample of positives and ensure my model would not overfit and predict too many images as real.
+  In order to correct for this, I deployed a technique called Synthetic Minority Over-sampling Technique (SMOTE). This involved taking the test images that should be detected as true positives by the system, and synthetically creating new observations from that dataset that are effectively weighted averages of similar test images. This expanded the sample of positives, and ensured the model would not overfit and lean too heavily toward a negative classification.
 
 ### **4. Image Comparison**
 
-  There are many different ways to 'measure' an image, and it was important for me to research some of the most popular methods for image matching in order to ensure that I was efficient with the progression of my experiment. There are four general measurement techniques I tried for the comparison with mixed results. For the purpose of computation speed, I converted all the images to grayscale for the analysis.
+  There are many different ways to 'measure' an image, and it was important to research some of the most popular methods for image matching in order to ensure that the experiment progressed efficiently. There are four general measurement techniques I tried for the comparison with mixed results. For the purpose of computation speed, all the images were converted to grayscale.
 
   **Histogram**
   
-  This involves converting the image into a histogram representation of the pixel intensities. Comparing the pixel intensity histograms between images proved to be a fast and indicative feature for the model. The depiction below shows an example of how this technique works to represent each pixel of the photo:
+  This involves converting the image into a histogram representation of the pixel intensities. Comparing the pixel intensity histograms between images using OpenCV's built in compareHist method proved to be a fast and indicative feature for the model. The depiction below shows an example of how this technique works to represent each pixel of the photo:
   
   ![Histogram Sample](https://github.com/stooblie/capstone_fighting_fake_news/blob/master/images/project/histogram_sample.jpg)  
 
@@ -68,17 +68,17 @@ There were five key stages to the project:
 
   **Image Hashing**
   
-  Image hashing involves representing the gradient directions from the image's changes in contrast as a hash. You can then compare two images using the similarity of their hashes. This metric was accurate when hashes matched or were very similar, but it failed to help the goal of a high recall rate, it did not score highly on feature importance, and it required 5x the computation time as SSIM, the most intensive of the other measurements. For my application's goals, it was not an ideal fit.
+  Image hashing involves representing the gradient directions from the image's changes in contrast as a hash. You can then compare two images using the similarity of their hashes. This metric  had high precision when hashes matched or were very similar, but it failed to contribute toward the goal of a high recall rate, it did not score highly on feature importance, and it required at least 5x the computation time as SSIM. For the application's goals, it was not an ideal fit.
 
 ### **5. Modeling**
 
-  I elected to use a Random Forest Classifier to predict which images matched based on their comparison results. Random Forest classifiers include a 'feature importance' measurement that allowed me to see which comparison metric was making the largest impact on determining which classification the image would fall under. Since I was experimenting with several different features for image comparison, 'feature importance' was important for guiding my decision making on wether to keep or exclude certain measurements.
+  I elected to use a Random Forest Classifier to predict which images matched based on their comparison results. Random Forest classifiers include a 'feature importance' measurement that shows which comparison metric was making the largest impact on determining the classification decision. Since I was experimenting with several different features for image comparison, 'feature importance' was important for guiding the decision making on wether to keep or exclude certain measurements.
 
-  Before testing the comparison results in the model, I split the data into a training and test set  (75/25) to ensure that my results of the model training would be generalizable to unseen data.
+  Before testing the comparison results in the model, I split the data into a training and test set  (75/25) to ensure that the results of the model training would be generalizable to unseen data.
 
 # Results & Analysis
 
-The model ended up performing well, achieving a 94% recall and 93% precision rate on 'full frame' images, and a 57% recall and 83% precision rate on the more ambitious 'out of frame images'. The template matching functionality will need further development to boost performance on the 'out of frame' images.
+The model eacheived a 94% recall and 93% precision rate on 'full frame' images, and a 57% recall and 83% precision rate on the more ambitious 'out of frame images'. The template matching functionality will need further development to boost performance on the 'out of frame' images.
 
 # Future Improvements
 
