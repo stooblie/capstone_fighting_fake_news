@@ -57,6 +57,8 @@ There were five key stages to the project:
   **Structural Similarity Index (SSIM)**
   
   One shortcoming of the histogram method is it does not take into account structural information about the image outside of the overall distribution of pixel intensities. The SSIM metric automatically calculates an index for each picture based on the contrast, luminance, and structure of the picture and helps offset the one-dimensional nature of just using the histogram.
+  
+  ![SSIM](https://github.com/stooblie/capstone_fighting_fake_news/blob/master/images/project/ssim_depiction.jpg)
 
   **Template Matching**
   
