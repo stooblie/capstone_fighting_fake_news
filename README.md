@@ -20,7 +20,7 @@
 
 The goal of the project was to maximize the image matching recall, or the percentage of the actual fake images that the model correctly identifies. A secondary goal was to maximize precision, or the percentage of the time an image that the model labels as fake is correctly identified. This priority in accuracy measurements is due to the fact that in the context of the application, the cost of missing a fake image that exists is higher than accidentally labeling real images as false.
 
-An important initial step was dividing the target datasets into 'full frame' and 'out of frame' images. A 'full frame' image is one in which the photo takes up the full frame and is not cropped, surrounded by a border, mixed with other images, etc. This was necessary as there is a lot more complexity involved in finding 'out of frame' fake images, and I had to temper expectations and incrementally grow the model.
+An important initial step was dividing the target datasets into 'full frame' and 'out of frame' images. A 'full frame' image is one in which the photo takes up the full frame and is not cropped, surrounded by a border, mixed with other images, etc. This was necessary because there is more complexity involved in finding 'out of frame' fake images.
 
 ![Airport Frames](https://github.com/stooblie/capstone_fighting_fake_news/blob/master/images/project/full_frame_out_of_frame.png) 
 
