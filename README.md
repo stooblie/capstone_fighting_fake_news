@@ -28,13 +28,13 @@ There were five key stages to the project:
 
 ### **1. Data Collection & Storage**
 
-  The project used a web scraper built with the Python library Scrapy to collect the data. This framework made it possible to easily build a fast web scraper with automatic image and file pipelines into AWS S3. The project includes unique scrapers with distinct start urls and AWS S3 folder feeds for each 'topic' a user might be interested in.
+  The project used a web scraper built with the Python library Scrapy to collect data. This framework made it possible to easily build a fast web scraper with automatic image and file pipelines into AWS S3. The project includes unique scrapers with distinct start urls and AWS S3 folder feeds for each 'topic' a user might be interested in.
 
   The data includes images, image urls, text, and page urls from the web pages. Having the page urls allows the user to return to the websites and collect additional information as necessary.
 
 ### **2. Collect Test Images for Measurement**
 
-  One key challenge the project presented was how to measure the success of the system when it was unknown whether the images from the internet were fake or not. This required me to manually seek out samples of the fake images and the different formats they could appear in on the internet, and use those as 'test' images to ensure that my system would capture a sufficient range of formats that the fake images could appear in. For example, this fake image of a shark swimming on the highway during Hurricane Harvey can manifest in the following ways:
+  One key challenge the project presented was how to measure the success of the system when it was unknown whether the images from the internet were fake or not. This required me to manually seek out samples of the fake images and the different formats they could appear in on the internet, and use those as 'test' images to ensure that the system would capture a sufficient range of formats the fake images could appear in. For example, this fake image of a shark swimming on the highway during Hurricane Harvey can manifest in the following ways:
   
   ![Shark Collage](https://github.com/stooblie/capstone_fighting_fake_news/blob/master/images/project/test_image_collage_shark.jpg) 
 
@@ -56,11 +56,11 @@ There were five key stages to the project:
 
   **Structural Similarity Index (SSIM)**
   
-  One shortcoming of the histogram method is it does not take into account structural information about the image outside of the overall distribution of pixel intensities. The SSIM metric automatically calculates an index for each picture based on the contrast, luminance, and structure of the picture and helps offset the one-dimensional nature of just using the histogram.
+  One shortcoming of the histogram method is it does not take into account structural information about the image outside of the overall distribution of pixel intensities. The SSIM metric from Python's scikit-image package automatically calculates an index for each picture based on the contrast, luminance, and structure of the picture and helps offset the one-dimensional nature of just using the histogram.
 
   **Template Matching**
   
-  Template matching is critical for finding matches in 'out of frame' images, where the fake image might be in a tweet, cropped, or combined in a frame with other pictures. Since this is a deeper problem than matching cleaner, full frame images, it was not my focus but I did have success using a very specific 'tweet matching' template. Tweets have a specified structure for their embedded images, the pictures are ~93% the width of the tweet and have a 2-1 ratio of width to length. Using these parameters, I was able to create a template that checked specifically  whether the target fake image was inside of the picture of the tweet.
+  Template matching is critical for finding matches in 'out of frame' images, where the fake image might be in a tweet, cropped, or combined in a frame with other pictures. Since this is a deeper problem than matching cleaner, full frame images, it was not the initial focus of the project but I did have success using a very specific 'tweet matching' template. Tweets have a specified structure for their embedded images, the pictures are ~93% the width of the tweet and have a 2-1 ratio of width to length. Using these parameters, I was able to create a template that checked specifically  whether the target fake image was inside of the picture of the tweet.
   
   ![Template Match](https://github.com/stooblie/capstone_fighting_fake_news/blob/master/images/project/template_match_depcition.jpg) 
 
