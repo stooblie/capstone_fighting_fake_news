@@ -1,6 +1,6 @@
 # Source Code
 
-**utilities.py** - Various utility functions used through out the program.
+**utilities.py** - Various utility functions used throughout the program.
 
 **compare.py** - A class for comparing scraped images to the targets.
 

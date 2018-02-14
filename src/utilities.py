@@ -1,4 +1,7 @@
-#The following functions are for the purpose of basic file manipulation.
+'''
+Functions for utilities used throughout the program. 
+'''
+
 from scipy.spatial.distance import cosine
 from sklearn.neighbors import KNeighborsClassifier
 import boto3
@@ -218,11 +221,8 @@ def load_folder_from_s3(bucket, path):
 
     Returns an iterable of the S3 objects for the files.
     '''
-    client = boto3.client('s3')
-    resource = boto3.resource('s3')
-    my_bucket = resource.Bucket(bucket)
 
-    return list(my_bucket.objects.filter(Prefix=path))[1:]
+    return list(bucket.objects.filter(Prefix=path))[1:]
 
 def update_urls(urls, name, out):
     '''
